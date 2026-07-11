@@ -6,6 +6,7 @@ function getApiKey(request) {
     const headerKey = request.headers.get('x-api-key');
     if (headerKey) return headerKey;
     // Cookie-based auth removed for security (CWE-522)
+    if (process.env.MUAPI_API_KEY) return process.env.MUAPI_API_KEY;
     return null;
 }
 
